@@ -1,0 +1,1 @@
+<img src="{{ asset('iuea-logo.png') }}" {{ $attributes->merge(['alt' => 'IUEA Logo']) }}>
