@@ -1,10 +1,10 @@
 <x-guest-layout>
-    <div class="mb-6 text-center">
-        <h2 class="text-xl font-black text-charcoal tracking-tight">Student Enrollment</h2>
+    <div class="mb-4 sm:mb-6 text-center">
+        <h2 class="text-lg sm:text-xl font-black text-charcoal tracking-tight">Student Enrollment</h2>
         <p class="text-[0.6rem] text-gray-400 font-bold uppercase tracking-widest mt-1">Institutional Registration</p>
     </div>
 
-    <form method="POST" action="{{ route('register') }}" class="space-y-4">
+    <form method="POST" action="{{ route('register') }}" class="space-y-3 sm:space-y-4">
         @csrf
 
         <!-- Institutional Identity Group -->

@@ -57,6 +57,15 @@
     text-wrap: balance;
 }
 
+/* Hide browser native password reveal button (Edge/Chrome/IE) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-textfield-decoration-container {
+    display: none !important;
+    visibility: hidden !important;
+}
+
 .tracking-tightest {
     letter-spacing: -0.05em;
 }

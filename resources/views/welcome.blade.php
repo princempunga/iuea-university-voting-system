@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IUEA | Live University Election Portal</title>
+    <link rel="icon" type="image/png" href="{{ asset('iuea-logo.png') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800|outfit:700,800" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -13,13 +14,14 @@
 <body class="antialiased font-sans bg-off-white" x-data="electionDashboard()">
     <div class="relative overflow-hidden min-h-screen">
         <!-- Navigation -->
-        <nav class="fixed w-full z-50 glass-panel border-b border-gray-100 shadow-sm px-6 py-4" x-data="{ mobileMenuOpen: false }">
+        <nav class="fixed w-full z-50 glass-panel border-b border-gray-100 shadow-sm px-6 py-4"
+            x-data="{ mobileMenuOpen: false }">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
                 <div class="flex items-center group cursor-pointer" onclick="window.location.href='/'">
                     <x-application-logo
                         class="h-14 w-auto object-contain transition-transform group-hover:scale-105 duration-500" />
                 </div>
-                
+
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-10">
                     <a href="#live-results" class="text-sm font-bold text-gray-500 hover:text-iuea-red transition">Live
@@ -38,51 +40,72 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="flex items-center md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-charcoal hover:text-iuea-red transition p-2 focus:outline-none">
-                        <svg class="w-8 h-8" x-show="!mobileMenuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    <button @click="mobileMenuOpen = !mobileMenuOpen"
+                        class="text-charcoal hover:text-iuea-red transition p-2 focus:outline-none">
+                        <svg class="w-8 h-8" x-show="!mobileMenuOpen" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
-                        <svg class="w-8 h-8" x-show="mobileMenuOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+                        <svg class="w-8 h-8" x-show="mobileMenuOpen" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" style="display: none;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Menu Drawer -->
-            <div x-show="mobileMenuOpen" 
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0 -translate-y-10"
-                 x-transition:enter-end="opacity-100 translate-y-0"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100 translate-y-0"
-                 x-transition:leave-end="opacity-0 -translate-y-10"
-                 class="absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-2xl overflow-hidden z-[60] md:!hidden"
-                 style="display: none;">
+            <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 -translate-y-10" x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-10"
+                class="absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-2xl overflow-hidden z-[60] md:!hidden"
+                style="display: none;">
                 <div class="p-8 space-y-8">
                     <div class="flex flex-col space-y-2">
-                        <span class="text-[0.6rem] font-black text-iuea-red uppercase tracking-[0.3em] mb-2">Navigation</span>
-                        <a href="#live-results" @click="mobileMenuOpen = false" class="text-2xl font-black text-charcoal hover:text-iuea-red transition-all flex items-center justify-between group">
+                        <span
+                            class="text-[0.6rem] font-black text-iuea-red uppercase tracking-[0.3em] mb-2">Navigation</span>
+                        <a href="#live-results" @click="mobileMenuOpen = false"
+                            class="text-2xl font-black text-charcoal hover:text-iuea-red transition-all flex items-center justify-between group">
                             <span>Live Results</span>
-                            <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
                         </a>
                         <div class="h-px bg-gray-50 w-full"></div>
-                        <a href="#how-it-works" @click="mobileMenuOpen = false" class="text-2xl font-black text-charcoal hover:text-iuea-red transition-all flex items-center justify-between group">
+                        <a href="#how-it-works" @click="mobileMenuOpen = false"
+                            class="text-2xl font-black text-charcoal hover:text-iuea-red transition-all flex items-center justify-between group">
                             <span>The Process</span>
-                            <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
                         </a>
                     </div>
-                    
+
                     <div class="pt-6 border-t border-gray-50 flex flex-col space-y-4">
-                        <span class="text-[0.6rem] font-black text-iuea-red uppercase tracking-[0.3em] mb-2">Account</span>
+                        <span
+                            class="text-[0.6rem] font-black text-iuea-red uppercase tracking-[0.3em] mb-2">Account</span>
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="btn-institutional w-full py-5 text-lg shadow-xl">Command Dashboard</a>
+                            <a href="{{ url('/dashboard') }}"
+                                class="btn-institutional w-full py-5 text-lg shadow-xl">Command Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-xl font-black text-charcoal hover:text-iuea-red transition py-2 flex items-center justify-between group">
+                            <a href="{{ route('login') }}"
+                                class="text-xl font-black text-charcoal hover:text-iuea-red transition py-2 flex items-center justify-between group">
                                 <span>Login</span>
-                                <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                                <svg class="w-5 h-5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
                             </a>
-                            <a href="{{ route('register') }}" class="btn-institutional w-full py-5 text-lg shadow-2xl shadow-iuea-red/20">Enroll Now</a>
+                            <a href="{{ route('register') }}"
+                                class="btn-institutional w-full py-5 text-lg shadow-2xl shadow-iuea-red/20">Enroll Now</a>
                         @endauth
                     </div>
                 </div>
@@ -197,25 +220,54 @@
                     <div class="max-w-xl">
                         <h2 class="text-4xl font-extrabold text-charcoal tracking-tightest mb-4 uppercase italic">Live
                             Election Results</h2>
-                        <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">Real-time participation and
-                            biometric audit feed</p>
+                        <div class="flex flex-wrap gap-4 mt-2">
+                            <div
+                                class="flex items-center space-x-2 text-[0.6rem] font-black text-gray-400 uppercase tracking-widest">
+                                <svg class="w-3 h-3 text-iuea-red" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <span x-text="'Starts: ' + getGlobalTimeline().start"></span>
+                            </div>
+                            <div
+                                class="flex items-center space-x-2 text-[0.6rem] font-black text-gray-400 uppercase tracking-widest border-l border-gray-100 pl-4">
+                                <svg class="w-3 h-3 text-charcoal" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                                <span x-text="'Ends: ' + getGlobalTimeline().end"></span>
+                            </div>
+                        </div>
                     </div>
                     <div
                         class="mt-8 md:mt-0 flex items-center space-x-4 bg-gray-50 p-2 rounded-2xl border border-gray-100">
+                        <!-- Countdown Card -->
+                        <div
+                            class="px-4 py-2 bg-charcoal rounded-xl shadow-lg border border-white/5 flex flex-col justify-center min-w-[140px]">
+                            <span class="block text-[0.5rem] font-black text-iuea-red uppercase tracking-[0.2em] mb-1"
+                                x-text="countdown.label">TIME REMAINING</span>
+                            <span class="text-lg font-black text-white leading-none tabular-nums tracking-tighter"
+                                x-text="countdown.display">00:00:00</span>
+                        </div>
                         <div class="px-4 py-2 bg-white rounded-xl shadow-sm border border-gray-100">
                             <span
-                                class="block text-[0.6rem] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">Total
-                                Votes cast</span>
-                            <span class="text-2xl font-black text-iuea-red leading-none tabular-nums"
+                                class="block text-[0.6rem] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">Global
+                                Participation</span>
+                            <span class="text-xl font-black text-iuea-red leading-none tabular-nums"
                                 x-text="getTotalGlobalVotes()">0</span>
                         </div>
-                        <div class="px-4 py-2">
+                        <div class="px-4 py-2 hidden lg:block">
                             <span
                                 class="block text-[0.6rem] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">Live
                                 Feed</span>
                             <div class="flex items-center">
                                 <span class="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-                                <span class="text-[0.65rem] font-black text-gray-500 uppercase">Synchronized</span>
+                                <span
+                                    class="text-[0.55rem] font-black text-gray-500 uppercase tracking-tighter">Synchronized</span>
                             </div>
                         </div>
                     </div>
@@ -239,7 +291,8 @@
                                         <h4 class="text-3xl font-black text-charcoal mb-2" x-text="election.title"></h4>
                                         <div
                                             class="inline-flex items-center px-3 py-1 bg-gray-50 rounded-lg text-[0.65rem] font-black uppercase text-gray-400 tracking-widest">
-                                            <span x-text="election.total_votes"></span> Total Verified Votes
+                                            <span class="mr-1" x-text="election.total_votes"></span> Total Verified
+                                            Ballots
                                         </div>
                                     </div>
 
@@ -383,9 +436,15 @@
                             <h5 class="text-sm font-black text-charcoal uppercase tracking-[0.2em]">Governance</h5>
                         </div>
                         <ul class="space-y-4 text-[0.7rem] font-bold text-gray-400 uppercase tracking-widest">
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Electoral Guidelines</a></li>
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Constitution</a></li>
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Election Schedule</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Electoral
+                                    Guidelines</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Constitution</a>
+                            </li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Election
+                                    Schedule</a></li>
                         </ul>
                     </div>
                     <div class="text-left space-y-6">
@@ -394,9 +453,15 @@
                             <h5 class="text-sm font-black text-charcoal uppercase tracking-[0.2em]">Verification</h5>
                         </div>
                         <ul class="space-y-4 text-[0.7rem] font-bold text-gray-400 uppercase tracking-widest">
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Biometric Protocol</a></li>
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Audit Logs</a></li>
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Registry Status</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Biometric
+                                    Protocol</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Audit
+                                    Logs</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Registry
+                                    Status</a></li>
                         </ul>
                     </div>
                     <div class="text-left space-y-6">
@@ -405,9 +470,15 @@
                             <h5 class="text-sm font-black text-charcoal uppercase tracking-[0.2em]">Institutional</h5>
                         </div>
                         <ul class="space-y-4 text-[0.7rem] font-bold text-gray-400 uppercase tracking-widest">
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Office of the Registrar</a></li>
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Digital Systems</a></li>
-                            <li><a href="#" class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">IT Support</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Office
+                                    of the Registrar</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">Digital
+                                    Systems</a></li>
+                            <li><a href="#"
+                                    class="hover:text-iuea-red hover:translate-x-1 inline-block transition-all duration-300">IT
+                                    Support</a></li>
                         </ul>
                     </div>
                 </div>
@@ -415,7 +486,8 @@
                 <div
                     class="w-full pt-10 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p class="text-[0.65rem] font-black text-gray-400 uppercase tracking-[0.3em]">&copy;
-                        {{ date('Y') }} <span class="text-iuea-red">International University of East Africa.</span> All Rights Reserved.
+                        {{ date('Y') }} <span class="text-iuea-red">International University of East Africa.</span> All
+                        Rights Reserved.
                     </p>
 
                     <div
@@ -437,12 +509,73 @@
             return {
                 elections: @json($elections),
 
+                countdown: {
+                    display: '00:00:00:00',
+                    label: 'UNTIL LOCKDOWN'
+                },
+
                 init() {
                     // Poll for live stats every 30 seconds
                     setInterval(() => {
                         this.fetchStats();
                     }, 30000);
+
+                    // Update countdown every second
+                    this.updateCountdown();
+                    setInterval(() => {
+                        this.updateCountdown();
+                    }, 1000);
                 },
+
+                updateCountdown() {
+                    const timeline = this.getGlobalDates();
+                    if (!timeline) return;
+
+                    const now = new Date().getTime();
+                    const start = new Date(timeline.start).getTime();
+                    const end = new Date(timeline.end).getTime();
+
+                    let target;
+                    if (now < start) {
+                        target = start;
+                        this.countdown.label = 'OPENS IN';
+                    } else if (now < end) {
+                        target = end;
+                        this.countdown.label = 'CLOSES IN';
+                    } else {
+                        this.countdown = { display: '00:00:00:00', label: 'CLOSED' };
+                        return;
+                    }
+
+                    const distance = target - now;
+
+                    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    this.countdown.display = `${d > 0 ? d + 'd ' : ''}${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                },
+
+                getGlobalDates() {
+                    let firstElection = null;
+                    Object.values(this.elections).forEach(group => {
+                        if (group.length > 0 && !firstElection) firstElection = group[0];
+                    });
+                    return firstElection ? { start: firstElection.start_time, end: firstElection.end_time } : null;
+                },
+
+                getGlobalTimeline() {
+                    const dates = this.getGlobalDates();
+                    if (!dates) return { start: 'TBD', end: 'TBD' };
+
+                    const opt = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                    return {
+                        start: new Date(dates.start).toLocaleDateString('en-US', opt),
+                        end: new Date(dates.end).toLocaleDateString('en-US', opt)
+                    };
+                },
+
 
                 async fetchStats() {
                     try {
